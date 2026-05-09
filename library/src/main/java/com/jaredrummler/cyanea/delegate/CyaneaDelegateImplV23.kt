@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 package com.jaredrummler.cyanea.delegate
 
 import android.annotation.SuppressLint
@@ -113,20 +115,20 @@ internal open class CyaneaDelegateImplV23(
     val processors = mutableListOf<CyaneaViewProcessor<*>>()
     processors.addAll(super.getProcessorsForTheming())
     processors.addAll(
-        arrayOf(
-            AlertDialogProcessor(),
-            BottomAppBarProcessor(),
-            CompoundButtonProcessor(),
-            DatePickerProcessor(),
-            ImageButtonProcessor(),
-            ListMenuItemViewProcessor(),
-            SearchAutoCompleteProcessor(),
-            SwitchProcessor(),
-            SwitchCompatProcessor(),
-            TimePickerProcessor(),
-            TextViewProcessor(),
-            ViewGroupProcessor()
-        )
+      arrayOf(
+        AlertDialogProcessor(),
+        BottomAppBarProcessor(),
+        CompoundButtonProcessor(),
+        DatePickerProcessor(),
+        ImageButtonProcessor(),
+        ListMenuItemViewProcessor(),
+        SearchAutoCompleteProcessor(),
+        SwitchProcessor(),
+        SwitchCompatProcessor(),
+        TimePickerProcessor(),
+        TextViewProcessor(),
+        ViewGroupProcessor()
+      )
     )
     return processors
   }
@@ -137,38 +139,38 @@ internal open class CyaneaDelegateImplV23(
 
     @SuppressLint("PrivateResource")
     private val PRELOADED_COLORS = intArrayOf(
-        R.color.cyanea_primary,
-        R.color.cyanea_primary_light,
-        R.color.cyanea_primary_dark,
-        R.color.cyanea_accent,
-        R.color.cyanea_accent_light,
-        R.color.cyanea_accent_dark,
-        R.color.cyanea_bg_dark,
-        R.color.cyanea_bg_dark_lighter,
-        R.color.cyanea_bg_dark_darker,
-        R.color.cyanea_bg_light,
-        R.color.cyanea_bg_light_lighter,
-        R.color.cyanea_bg_light_darker,
-        R.color.cyanea_background_dark,
-        R.color.cyanea_background_dark_lighter,
-        R.color.cyanea_background_dark_darker,
-        R.color.cyanea_background_light,
-        R.color.cyanea_background_light_lighter,
-        R.color.cyanea_background_light_darker
+      R.color.cyanea_primary,
+      R.color.cyanea_primary_light,
+      R.color.cyanea_primary_dark,
+      R.color.cyanea_accent,
+      R.color.cyanea_accent_light,
+      R.color.cyanea_accent_dark,
+      R.color.cyanea_bg_dark,
+      R.color.cyanea_bg_dark_lighter,
+      R.color.cyanea_bg_dark_darker,
+      R.color.cyanea_bg_light,
+      R.color.cyanea_bg_light_lighter,
+      R.color.cyanea_bg_light_darker,
+      R.color.cyanea_background_dark,
+      R.color.cyanea_background_dark_lighter,
+      R.color.cyanea_background_dark_darker,
+      R.color.cyanea_background_light,
+      R.color.cyanea_background_light_lighter,
+      R.color.cyanea_background_light_darker
     )
 
     private val PRELOADED_DRAWABLES = intArrayOf(
-        R.drawable.cyanea_bg_button_primary,
-        R.drawable.cyanea_primary,
-        R.drawable.cyanea_primary_dark,
-        R.drawable.cyanea_bg_button_accent,
-        R.drawable.cyanea_accent,
-        R.drawable.cyanea_bg_dark,
-        R.drawable.cyanea_bg_dark_lighter,
-        R.drawable.cyanea_bg_dark_darker,
-        R.drawable.cyanea_bg_light,
-        R.drawable.cyanea_bg_light_lighter,
-        R.drawable.cyanea_bg_light_darker
+      R.drawable.cyanea_bg_button_primary,
+      R.drawable.cyanea_primary,
+      R.drawable.cyanea_primary_dark,
+      R.drawable.cyanea_bg_button_accent,
+      R.drawable.cyanea_accent,
+      R.drawable.cyanea_bg_dark,
+      R.drawable.cyanea_bg_dark_lighter,
+      R.drawable.cyanea_bg_dark_darker,
+      R.drawable.cyanea_bg_light,
+      R.drawable.cyanea_bg_light_lighter,
+      R.drawable.cyanea_bg_light_darker
     )
   }
 }

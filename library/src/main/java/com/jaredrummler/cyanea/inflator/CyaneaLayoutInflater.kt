@@ -170,7 +170,7 @@ class CyaneaLayoutInflater : LayoutInflater {
   }
 
   private fun createViewFromDelegate(parent: View?, name: String, context: Context, attrs: AttributeSet): View? =
-      inflationDelegate?.createView(parent, name, context, attrs)
+    inflationDelegate?.createView(parent, name, context, attrs)
 
   private class WrapperFactory internal constructor(
     private val inflater: CyaneaLayoutInflater,
@@ -178,8 +178,11 @@ class CyaneaLayoutInflater : LayoutInflater {
   ) : LayoutInflater.Factory {
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? =
-        processView(inflater.createViewFromDelegate(null, name, context, attrs)
-            ?: factory.onCreateView(name, context, attrs), attrs)
+      processView(
+        inflater.createViewFromDelegate(null, name, context, attrs)
+          ?: factory.onCreateView(name, context, attrs),
+        attrs
+      )
 
     protected fun processView(view: View?, attrs: AttributeSet): View? = inflater.processView(view, attrs)
   }
@@ -190,12 +193,18 @@ class CyaneaLayoutInflater : LayoutInflater {
   ) : LayoutInflater.Factory2 {
 
     override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? =
-        processView(inflater.createViewFromDelegate(parent, name, context, attrs)
-            ?: factory.onCreateView(parent, name, context, attrs), attrs)
+      processView(
+        inflater.createViewFromDelegate(parent, name, context, attrs)
+          ?: factory.onCreateView(parent, name, context, attrs),
+        attrs
+      )
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? =
-        processView(inflater.createViewFromDelegate(null, name, context, attrs)
-            ?: factory.onCreateView(name, context, attrs), attrs)
+      processView(
+        inflater.createViewFromDelegate(null, name, context, attrs)
+          ?: factory.onCreateView(name, context, attrs),
+        attrs
+      )
 
     protected fun processView(view: View?, attrs: AttributeSet): View? = inflater.processView(view, attrs)
   }
@@ -206,12 +215,13 @@ class CyaneaLayoutInflater : LayoutInflater {
   ) : WrapperFactory2(inflater, factory) {
 
     override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? =
-        factory.onCreateView(parent, name, context, attrs).let { view ->
-          processView(
-              inflater.createViewFromDelegate(view, name, context, attrs)
-                  ?: inflater.createCustomView(view, name, context, attrs), attrs
-          )
-        }
+      factory.onCreateView(parent, name, context, attrs).let { view ->
+        processView(
+          inflater.createViewFromDelegate(view, name, context, attrs)
+            ?: inflater.createCustomView(view, name, context, attrs),
+          attrs
+        )
+      }
   }
 
   companion object {

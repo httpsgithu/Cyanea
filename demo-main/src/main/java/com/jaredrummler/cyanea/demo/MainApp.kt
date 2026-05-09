@@ -20,7 +20,7 @@ class MainApp : Application(), CyaneaDecorator.Provider, CyaneaViewProcessor.Pro
   )
 
   override fun getDecorators(): Array<CyaneaDecorator> = arrayOf(
-      // Add a decorator to apply custom attributes to any view
-      FontDecorator()
+    // Add a decorator to apply custom attributes to any view
+    FontDecorator()
   )
 }

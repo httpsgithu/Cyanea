@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 package com.jaredrummler.cyanea.tinting
 
 import android.annotation.SuppressLint
@@ -266,15 +268,20 @@ class SystemBarTint(activity: Activity) {
 
     /** The height of the status bar (in pixels). */
     val statusBarHeight: Int
+
     /** The height of the action bar (in pixels). */
     @Suppress("MemberVisibilityCanBePrivate")
     val actionBarHeight: Int
+
     /** The height of the system navigation bar. */
     val navigationBarHeight: Int
+
     /** The width of the system navigation bar when it is placed vertically on the screen. */
     val navigationBarWidth: Int
+
     /** True if this device uses soft key navigation, False otherwise. */
     val hasNavigationBar: Boolean
+
     /** True if navigation should appear at the bottom of the screen, False otherwise. */
     val isNavigationAtBottom: Boolean
       get() = smallestWidthDp >= 600 || inPortrait
@@ -374,8 +381,13 @@ class SystemBarTint(activity: Activity) {
       @SuppressLint("PrivateApi")
       private val NAV_BAR_OVERRIDE = try {
         val systemPropertiesClass = Class.forName("android.os.SystemProperties")
-        Reflection.invoke<String>(systemPropertiesClass, "get",
-            arrayOf(String::class.java, String::class.java), "qemu.hw.mainkeys", "") ?: ""
+        Reflection.invoke<String>(
+          systemPropertiesClass,
+          "get",
+          arrayOf(String::class.java, String::class.java),
+          "qemu.hw.mainkeys",
+          ""
+        ) ?: ""
       } catch (ignored: Exception) {
         ""
       }

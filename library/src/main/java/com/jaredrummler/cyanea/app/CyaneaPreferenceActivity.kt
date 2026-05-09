@@ -40,8 +40,10 @@ import com.jaredrummler.cyanea.delegate.CyaneaDelegate
  *
  * You must implement [BaseCyaneaActivity.getThemeResId] and return a valid cyanea theme.
  */
-abstract class CyaneaPreferenceActivity : PreferenceActivity(),
-    BaseAppCompatDelegate, BaseCyaneaActivity {
+abstract class CyaneaPreferenceActivity :
+  PreferenceActivity(),
+  BaseAppCompatDelegate,
+  BaseCyaneaActivity {
 
   private val appCompatDelegate: AppCompatDelegate by lazy {
     AppCompatDelegate.create(this, null)

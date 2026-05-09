@@ -53,22 +53,22 @@ data class CyaneaTheme internal constructor(
 ) {
 
   constructor(themeName: String, cyanea: Cyanea) : this(
-      themeName,
-      cyanea.baseTheme,
-      cyanea.primary,
-      cyanea.primaryDark,
-      cyanea.primaryLight,
-      cyanea.accent,
-      cyanea.accentDark,
-      cyanea.accentLight,
-      cyanea.backgroundColor,
-      cyanea.backgroundColorDark,
-      cyanea.backgroundColorLight,
-      cyanea.menuIconColor,
-      cyanea.subMenuIconColor,
-      cyanea.primary,
-      cyanea.shouldTintStatusBar,
-      cyanea.shouldTintNavBar
+    themeName,
+    cyanea.baseTheme,
+    cyanea.primary,
+    cyanea.primaryDark,
+    cyanea.primaryLight,
+    cyanea.accent,
+    cyanea.accentDark,
+    cyanea.accentLight,
+    cyanea.backgroundColor,
+    cyanea.backgroundColorDark,
+    cyanea.backgroundColorLight,
+    cyanea.menuIconColor,
+    cyanea.subMenuIconColor,
+    cyanea.primary,
+    cyanea.shouldTintStatusBar,
+    cyanea.shouldTintNavBar
   )
 
   /**
@@ -121,8 +121,8 @@ data class CyaneaTheme internal constructor(
    * Check if this theme matches the current color scheme
    */
   fun isMatchingColorScheme(cyanea: Cyanea): Boolean = primary == cyanea.primary &&
-      accent == cyanea.accent &&
-      background == cyanea.backgroundColor
+    accent == cyanea.accent &&
+    background == cyanea.backgroundColor
 
   companion object {
 
@@ -155,7 +155,7 @@ data class CyaneaTheme internal constructor(
      * Get a list of themes from an asset containing the JSON
      */
     fun from(assets: AssetManager, path: String) = from(
-        assets.open(path).bufferedReader().use { it.readText() }
+      assets.open(path).bufferedReader().use { it.readText() }
     )
 
     /**
@@ -234,10 +234,12 @@ data class CyaneaTheme internal constructor(
         ColorUtils.parseColor(json.getString(MENU_ICON_COLOR))
       } else {
         @Suppress("DEPRECATION")
-        Cyanea.res.getColor(if (ColorUtils.isDarkColor(primary, 0.75))
-          R.color.cyanea_menu_icon_light
-        else
-          R.color.cyanea_menu_icon_dark
+        Cyanea.res.getColor(
+          if (ColorUtils.isDarkColor(primary, 0.75)) {
+            R.color.cyanea_menu_icon_light
+          } else {
+            R.color.cyanea_menu_icon_dark
+          }
         )
       }
       val subMenuIconColor = if (json.has(SUB_MENU_ICON_COLOR)) {
@@ -245,7 +247,8 @@ data class CyaneaTheme internal constructor(
       } else {
         @Suppress("DEPRECATION")
         Cyanea.res.getColor(
-            if (baseTheme == LIGHT) R.color.cyanea_sub_menu_icon_dark else R.color.cyanea_sub_menu_icon_light)
+          if (baseTheme == LIGHT) R.color.cyanea_sub_menu_icon_dark else R.color.cyanea_sub_menu_icon_light
+        )
       }
 
       // Get the navigation bar colors
@@ -272,22 +275,22 @@ data class CyaneaTheme internal constructor(
       }
 
       return CyaneaTheme(
-          themeName,
-          baseTheme,
-          primary,
-          primaryDark,
-          primaryLight,
-          accent,
-          accentDark,
-          accentLight,
-          background,
-          backgroundDarker,
-          backgroundLighter,
-          menuIconColor,
-          subMenuIconColor,
-          navigationBarColor,
-          shouldTintStatusBar,
-          shouldTintNavBar
+        themeName,
+        baseTheme,
+        primary,
+        primaryDark,
+        primaryLight,
+        accent,
+        accentDark,
+        accentLight,
+        background,
+        backgroundDarker,
+        backgroundLighter,
+        menuIconColor,
+        subMenuIconColor,
+        navigationBarColor,
+        shouldTintStatusBar,
+        shouldTintNavBar
       )
     }
   }

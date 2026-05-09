@@ -26,7 +26,7 @@ class AboutFragment : CyaneaFragment() {
     resources.getStringArray(R.array.cyanea_topics).forEach { text ->
       val chip = layoutInflater.inflate(R.layout.cat_chip_topic, cyaneaTopics, false) as Chip
       chip.chipBackgroundColor = ColorStateList.valueOf(
-          if (cyanea.isDark) cyanea.backgroundColorLight else cyanea.backgroundColorDark
+        if (cyanea.isDark) cyanea.backgroundColorLight else cyanea.backgroundColorDark
       )
       chip.setTextColor(if (cyanea.isDark) Color.WHITE else Color.BLACK)
       chip.text = text

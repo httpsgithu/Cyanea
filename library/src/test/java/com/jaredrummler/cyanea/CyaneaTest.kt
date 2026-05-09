@@ -35,11 +35,12 @@ import org.mockito.junit.MockitoJUnitRunner
 class CyaneaTest {
 
   @Mock private lateinit var application: Application
+
   @Mock private lateinit var resources: Resources
 
   @Before fun setUp() {
     whenever(application.getSharedPreferences(anyString(), anyInt()))
-        .thenReturn(mock())
+      .thenReturn(mock())
 
     Cyanea.init(application, resources)
   }

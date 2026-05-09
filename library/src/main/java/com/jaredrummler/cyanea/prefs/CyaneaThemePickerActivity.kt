@@ -32,8 +32,8 @@ class CyaneaThemePickerActivity : CyaneaAppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
-          .add(android.R.id.content, CyaneaThemePickerFragment.newInstance())
-          .commit()
+        .add(android.R.id.content, CyaneaThemePickerFragment.newInstance())
+        .commit()
     }
   }
 

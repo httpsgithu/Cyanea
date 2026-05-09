@@ -100,7 +100,7 @@ open class CyaneaSettingsFragment : PreferenceFragmentCompat(), OnPreferenceChan
     setupNavBarPref()
   }
 
-  override fun onPreferenceClick(preference: Preference?): Boolean {
+  override fun onPreferenceClick(preference: Preference): Boolean {
     return when (preference) {
       prefThemePicker -> {
         activity?.run {
@@ -116,7 +116,7 @@ open class CyaneaSettingsFragment : PreferenceFragmentCompat(), OnPreferenceChan
     }
   }
 
-  override fun onPreferenceChange(preference: Preference?, newValue: Any?): Boolean {
+  override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
     fun editTheme(action: (editor: Cyanea.Editor) -> Unit) {
       cyanea.edit {
         action(this)
@@ -146,7 +146,7 @@ open class CyaneaSettingsFragment : PreferenceFragmentCompat(), OnPreferenceChan
           setZeroPaddingToLayoutChildren(holder.itemView)
         } else {
           holder.itemView.findViewById<View>(R.id.icon_frame)?.let { iconFrame ->
-            iconFrame.visibility = if (preference.icon == null) View.GONE else View.VISIBLE
+            iconFrame.visibility = if (preference?.icon == null) View.GONE else View.VISIBLE
           }
         }
       }
@@ -172,7 +172,9 @@ open class CyaneaSettingsFragment : PreferenceFragmentCompat(), OnPreferenceChan
     }
     val isColored = if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
       activity?.window?.navigationBarColor == cyanea.primary
-    } else false
+    } else {
+      false
+    }
     prefColorNavBar.isChecked = cyanea.shouldTintNavBar || isColored
     val sysBarConfig = SystemBarTint(requireActivity()).sysBarConfig
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !sysBarConfig.hasNavigationBar) {
@@ -182,7 +184,8 @@ open class CyaneaSettingsFragment : PreferenceFragmentCompat(), OnPreferenceChan
     }
   }
 
-  private inline fun <reified T : Preference> findPreference(key: String): T = super.findPreference(key) as T
+  private inline fun <reified T : Preference> findPreference(key: String): T =
+    super.findPreference<T>(key) as T
 
   companion object {
     private const val PREF_CATEGORY = "cyanea_preference_category"

@@ -40,9 +40,12 @@ class ColorUtils private constructor() {
     @JvmOverloads
     @ColorInt
     fun darker(@ColorInt color: Int, @FloatRange(from = 0.0, to = 1.0) factor: Float = 0.85f): Int {
-      return Color.argb(Color.alpha(color), Math.max((Color.red(color) * factor).toInt(), 0),
-          Math.max((Color.green(color) * factor).toInt(), 0),
-          Math.max((Color.blue(color) * factor).toInt(), 0))
+      return Color.argb(
+        Color.alpha(color),
+        Math.max((Color.red(color) * factor).toInt(), 0),
+        Math.max((Color.green(color) * factor).toInt(), 0),
+        Math.max((Color.blue(color) * factor).toInt(), 0)
+      )
     }
 
     /**

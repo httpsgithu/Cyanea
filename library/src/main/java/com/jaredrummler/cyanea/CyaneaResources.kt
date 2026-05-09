@@ -76,8 +76,11 @@ class CyaneaResources(original: Resources, private val cyanea: Cyanea = Cyanea.i
       R.color.cyanea_background_light_lighter, R.drawable.cyanea_bg_light_lighter
       -> ColorDrawable(cyanea.backgroundLightLighter)
       else -> {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-          super.getDrawable(id) else super.getDrawable(id, theme)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+          super.getDrawable(id)
+        } else {
+          super.getDrawable(id, theme)
+        }
       }
     }
   }
@@ -106,8 +109,11 @@ class CyaneaResources(original: Resources, private val cyanea: Cyanea = Cyanea.i
     R.color.cyanea_background_light_darker -> cyanea.backgroundLightDarker
     R.color.cyanea_background_light_lighter -> cyanea.backgroundLightLighter
     else -> {
-      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-        super.getColor(id) else super.getColor(id, theme)
+      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        super.getColor(id)
+      } else {
+        super.getColor(id, theme)
+      }
     }
   }
 

@@ -260,8 +260,12 @@ class MenuTint(
      * @param menu The menu to force icons to show
      */
     fun forceMenuIcons(menu: Menu) {
-      Reflection.invoke<Any?>(menu, "setOptionalIconsVisible",
-        arrayOf(Boolean::class.javaPrimitiveType!!), true)
+      Reflection.invoke<Any?>(
+        menu,
+        "setOptionalIconsVisible",
+        arrayOf(Boolean::class.javaPrimitiveType!!),
+        true
+      )
     }
 
     /**
@@ -284,8 +288,11 @@ class MenuTint(
       while (i < count) {
         val view = viewGroup.getChildAt(i)
         if (view is ImageView &&
-          (view.javaClass.simpleName == "OverflowMenuButton" ||
-            view is ActionMenuView.ActionMenuChildView)) {
+          (
+            view.javaClass.simpleName == "OverflowMenuButton" ||
+              view is ActionMenuView.ActionMenuChildView
+            )
+        ) {
           return view
         } else if (view is ViewGroup) {
           findOverflowMenuButton(view)?.let { btn -> return btn }
@@ -315,7 +322,8 @@ class MenuTint(
       while (i < count) {
         val view = viewGroup.getChildAt(i)
         if (view.javaClass == androidx.appcompat.widget.Toolbar::class.java ||
-          view.javaClass.name == "android.widget.Toolbar") {
+          view.javaClass.name == "android.widget.Toolbar"
+        ) {
           toolbar = view as ViewGroup
         } else if (view is ViewGroup) {
           toolbar = findToolbar(view)
@@ -330,14 +338,14 @@ class MenuTint(
   }
 
   inner class ActionExpandListener : MenuItem.OnActionExpandListener {
-    override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+    override fun onMenuItemActionExpand(item: MenuItem): Boolean {
       val color = originalMenuIconColor ?: menuIconColor
       menuIconColor = color
       reapply()
       return true
     }
 
-    override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+    override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
       val color = originalMenuIconColor ?: menuIconColor
       menuIconColor = color
       reapply()

@@ -51,15 +51,17 @@ class CyaneaThemes internal constructor(private val cyanea: Cyanea) {
   val actionBarTheme: Int
     get() = when (cyanea.baseTheme) {
       DARK ->
-        if (cyanea.isActionBarLight)
+        if (cyanea.isActionBarLight) {
           R.style.Theme_Cyanea_Dark_LightActionBar
-        else
+        } else {
           R.style.Theme_Cyanea_Dark
+        }
       LIGHT ->
-        if (cyanea.isActionBarDark)
+        if (cyanea.isActionBarDark) {
           R.style.Theme_Cyanea_Light_DarkActionBar
-        else
+        } else {
           R.style.Theme_Cyanea_Light
+        }
     }
 
   /**
@@ -75,14 +77,18 @@ class CyaneaThemes internal constructor(private val cyanea: Cyanea) {
   val noActionBarTheme: Int
     get() = when (cyanea.baseTheme) {
       DARK ->
-        if (cyanea.isActionBarLight) // Check primary color for correct actionBarTheme
+        if (cyanea.isActionBarLight) {
+          // Check primary color for correct actionBarTheme
           R.style.Theme_Cyanea_Dark_LightActionBar_NoActionBar
-        else
+        } else {
           R.style.Theme_Cyanea_Dark_NoActionBar
+        }
       LIGHT ->
-        if (cyanea.isActionBarDark) // Check primary color for correct actionBarTheme
+        if (cyanea.isActionBarDark) {
+          // Check primary color for correct actionBarTheme
           R.style.Theme_Cyanea_Light_DarkActionBar_NoActionBar
-        else
+        } else {
           R.style.Theme_Cyanea_Light_NoActionBar
+        }
     }
 }

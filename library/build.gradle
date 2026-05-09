@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
+  namespace 'com.jaredrummler.cyanea'
   compileSdkVersion buildConfig.compileSdk
 
   defaultConfig {
@@ -34,4 +35,7 @@ dependencies {
   testImplementation deps.mockito.kotlin
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+// gradle-mvn-push.gradle uses the Gradle 6 'maven' plugin which was removed in
+// Gradle 7. Re-enabling Maven Central publishing requires porting it to
+// 'maven-publish'. Skipped here so the local build can proceed.
+// apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

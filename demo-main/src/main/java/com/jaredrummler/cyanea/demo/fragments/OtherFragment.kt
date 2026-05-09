@@ -9,8 +9,8 @@ import android.widget.LinearLayout
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
-import com.jaredrummler.cyanea.demo.activities.DrawerActivity
 import com.jaredrummler.cyanea.demo.R
+import com.jaredrummler.cyanea.demo.activities.DrawerActivity
 import com.jaredrummler.cyanea.demo.activities.RecyclerViewActivity
 
 class OtherFragment : Fragment() {
@@ -41,7 +41,9 @@ class OtherFragment : Fragment() {
     dialogLauncherButton.setOnClickListener { action() }
     dialogLauncherButton.setText(stringResId)
     val params = LinearLayout.LayoutParams(
-        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+      LinearLayout.LayoutParams.MATCH_PARENT,
+      LinearLayout.LayoutParams.WRAP_CONTENT
+    )
     params.topMargin = Math.round(marginTop * resources.displayMetrics.density)
     params.bottomMargin = Math.round(marginBottom * resources.displayMetrics.density)
     container.addView(dialogLauncherButton, params)

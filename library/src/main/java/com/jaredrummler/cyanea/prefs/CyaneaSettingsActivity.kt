@@ -30,8 +30,8 @@ open class CyaneaSettingsActivity : CyaneaAppCompatActivity() {
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
-          .add(android.R.id.content, CyaneaSettingsFragment.newInstance())
-          .commit()
+        .add(android.R.id.content, CyaneaSettingsFragment.newInstance())
+        .commit()
     }
   }
 

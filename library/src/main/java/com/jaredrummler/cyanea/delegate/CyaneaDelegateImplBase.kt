@@ -174,13 +174,13 @@ internal open class CyaneaDelegateImplBase(
 
   protected open fun getProcessorsForTheming(): List<CyaneaViewProcessor<out View>> {
     return arrayListOf(
-        ListMenuItemViewProcessor(),
-        AlertDialogProcessor(),
-        TextViewProcessor(),
-        BottomAppBarProcessor(),
-        FloatingActionButtonProcessor(),
-        TextInputLayoutProcessor(),
-        NavigationViewProcessor()
+      ListMenuItemViewProcessor(),
+      AlertDialogProcessor(),
+      TextViewProcessor(),
+      BottomAppBarProcessor(),
+      FloatingActionButtonProcessor(),
+      TextInputLayoutProcessor(),
+      NavigationViewProcessor()
     )
   }
 

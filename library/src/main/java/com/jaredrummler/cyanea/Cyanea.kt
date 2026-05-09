@@ -102,10 +102,12 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   var primary by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** A lighter version of the [primary] color */
   var primaryLight by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** A darker version of the [primary] color */
   var primaryDark by Delegates.notNull<Int>()
     @ColorInt get
@@ -115,10 +117,12 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   var accent by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** A lighter version of the [accent] color */
   var accentLight by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** A darker version of the [accent] color */
   var accentDark by Delegates.notNull<Int>()
     @ColorInt get
@@ -130,12 +134,14 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
       LIGHT -> backgroundLight
       DARK -> backgroundDark
     }
+
   /* A lighter version of the [background] color */
   val backgroundColorLight: Int
     get() = when (baseTheme) {
       LIGHT -> backgroundLightLighter
       DARK -> backgroundDarkLighter
     }
+
   /* A darker version of the [background] color */
   val backgroundColorDark: Int
     get() = when (baseTheme) {
@@ -147,6 +153,7 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   var menuIconColor by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** The color of icons in a [menu's][Menu] sub-menu */
   var subMenuIconColor by Delegates.notNull<Int>()
     @ColorInt get
@@ -156,9 +163,11 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   var navigationBar by Delegates.notNull<Int>()
     @ColorInt get
     private set
+
   /** True to set the [primaryDark] color on the system status bar */
   var shouldTintStatusBar by Delegates.notNull<Boolean>()
     private set
+
   /** True to set the [navigationBar] color on the system navigation bar */
   var shouldTintNavBar by Delegates.notNull<Boolean>()
     private set
@@ -166,14 +175,19 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   /** The base theme. Either [LIGHT] or [DARK] */
   var baseTheme by Delegates.notNull<BaseTheme>()
     internal set
+
   /** True if the [baseTheme] is [DARK] */
   val isDark get() = baseTheme == DARK
+
   /** True if the [baseTheme] is [LIGHT] */
   val isLight get() = baseTheme == LIGHT
+
   /** True if the [primary] color is a dark color */
   val isActionBarDark get() = ColorUtils.isDarkColor(primary, 0.75)
+
   /** True if the [primary] color is a light color */
   val isActionBarLight get() = !isActionBarDark
+
   /** True if the theme has been modified at least once */
   val isThemeModified get() = timestamp != NONE_TIMESTAMP
 
@@ -210,7 +224,8 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
    */
   @JvmOverloads
   fun tint(menu: Menu, activity: Activity, forceIcons: Boolean = true) =
-    MenuTint(menu,
+    MenuTint(
+      menu,
       menuIconColor = menuIconColor,
       subIconColor = subMenuIconColor,
       forceIcons = forceIcons
@@ -232,48 +247,82 @@ class Cyanea private constructor(private val prefs: SharedPreferences) {
   inline fun edit(action: Cyanea.Editor.() -> Unit) = edit().also { editor -> action(editor) }.apply()
 
   private fun loadDefaults() {
-    primary = prefs.getInt(PREF_PRIMARY,
-      res.getColor(R.color.cyanea_primary_reference))
-    primaryDark = prefs.getInt(PREF_PRIMARY_DARK,
-      res.getColor(R.color.cyanea_primary_dark_reference))
-    primaryLight = prefs.getInt(PREF_PRIMARY_LIGHT,
-      res.getColor(R.color.cyanea_primary_light_reference))
+    primary = prefs.getInt(
+      PREF_PRIMARY,
+      res.getColor(R.color.cyanea_primary_reference)
+    )
+    primaryDark = prefs.getInt(
+      PREF_PRIMARY_DARK,
+      res.getColor(R.color.cyanea_primary_dark_reference)
+    )
+    primaryLight = prefs.getInt(
+      PREF_PRIMARY_LIGHT,
+      res.getColor(R.color.cyanea_primary_light_reference)
+    )
 
-    accent = prefs.getInt(PREF_ACCENT,
-      res.getColor(R.color.cyanea_accent_reference))
-    accentDark = prefs.getInt(PREF_ACCENT_DARK,
-      res.getColor(R.color.cyanea_accent_dark_reference))
-    accentLight = prefs.getInt(PREF_ACCENT_LIGHT,
-      res.getColor(R.color.cyanea_accent_light_reference))
+    accent = prefs.getInt(
+      PREF_ACCENT,
+      res.getColor(R.color.cyanea_accent_reference)
+    )
+    accentDark = prefs.getInt(
+      PREF_ACCENT_DARK,
+      res.getColor(R.color.cyanea_accent_dark_reference)
+    )
+    accentLight = prefs.getInt(
+      PREF_ACCENT_LIGHT,
+      res.getColor(R.color.cyanea_accent_light_reference)
+    )
 
-    backgroundLight = prefs.getInt(PREF_BACKGROUND_LIGHT,
-      res.getColor(R.color.cyanea_bg_light))
-    backgroundLightDarker = prefs.getInt(PREF_BACKGROUND_LIGHT_DARKER,
-      res.getColor(R.color.cyanea_bg_light_darker))
-    backgroundLightLighter = prefs.getInt(PREF_BACKGROUND_LIGHT_LIGHTER,
-      res.getColor(R.color.cyanea_bg_light_lighter))
+    backgroundLight = prefs.getInt(
+      PREF_BACKGROUND_LIGHT,
+      res.getColor(R.color.cyanea_bg_light)
+    )
+    backgroundLightDarker = prefs.getInt(
+      PREF_BACKGROUND_LIGHT_DARKER,
+      res.getColor(R.color.cyanea_bg_light_darker)
+    )
+    backgroundLightLighter = prefs.getInt(
+      PREF_BACKGROUND_LIGHT_LIGHTER,
+      res.getColor(R.color.cyanea_bg_light_lighter)
+    )
 
-    backgroundDark = prefs.getInt(PREF_BACKGROUND_DARK,
-      res.getColor(R.color.cyanea_bg_dark))
-    backgroundDarkDarker = prefs.getInt(PREF_BACKGROUND_DARK_DARKER,
-      res.getColor(R.color.cyanea_bg_dark_darker))
-    backgroundDarkLighter = prefs.getInt(PREF_BACKGROUND_DARK_LIGHTER,
-      res.getColor(R.color.cyanea_bg_dark_lighter))
+    backgroundDark = prefs.getInt(
+      PREF_BACKGROUND_DARK,
+      res.getColor(R.color.cyanea_bg_dark)
+    )
+    backgroundDarkDarker = prefs.getInt(
+      PREF_BACKGROUND_DARK_DARKER,
+      res.getColor(R.color.cyanea_bg_dark_darker)
+    )
+    backgroundDarkLighter = prefs.getInt(
+      PREF_BACKGROUND_DARK_LIGHTER,
+      res.getColor(R.color.cyanea_bg_dark_lighter)
+    )
 
     baseTheme = getBaseTheme(prefs, res)
 
-    menuIconColor = prefs.getInt(PREF_MENU_ICON_COLOR,
-      res.getColor(if (isActionBarLight) R.color.cyanea_menu_icon_dark else R.color.cyanea_menu_icon_light))
-    subMenuIconColor = prefs.getInt(PREF_SUB_MENU_ICON_COLOR,
-      res.getColor(if (baseTheme == LIGHT) R.color.cyanea_sub_menu_icon_dark else R.color.cyanea_sub_menu_icon_light))
+    menuIconColor = prefs.getInt(
+      PREF_MENU_ICON_COLOR,
+      res.getColor(if (isActionBarLight) R.color.cyanea_menu_icon_dark else R.color.cyanea_menu_icon_light)
+    )
+    subMenuIconColor = prefs.getInt(
+      PREF_SUB_MENU_ICON_COLOR,
+      res.getColor(if (baseTheme == LIGHT) R.color.cyanea_sub_menu_icon_dark else R.color.cyanea_sub_menu_icon_light)
+    )
 
-    navigationBar = prefs.getInt(PREF_NAVIGATION_BAR,
-      res.getColor(R.color.cyanea_navigation_bar_reference))
+    navigationBar = prefs.getInt(
+      PREF_NAVIGATION_BAR,
+      res.getColor(R.color.cyanea_navigation_bar_reference)
+    )
 
-    shouldTintStatusBar = prefs.getBoolean(PREF_SHOULD_TINT_STATUS_BAR,
-      res.getBoolean(R.bool.should_tint_status_bar))
-    shouldTintNavBar = prefs.getBoolean(PREF_SHOULD_TINT_NAV_BAR,
-      res.getBoolean(R.bool.should_tint_nav_bar))
+    shouldTintStatusBar = prefs.getBoolean(
+      PREF_SHOULD_TINT_STATUS_BAR,
+      res.getBoolean(R.bool.should_tint_status_bar)
+    )
+    shouldTintNavBar = prefs.getBoolean(
+      PREF_SHOULD_TINT_NAV_BAR,
+      res.getBoolean(R.bool.should_tint_nav_bar)
+    )
 
     timestamp = prefs.getLong(PREF_TIMESTAMP, NONE_TIMESTAMP)
 

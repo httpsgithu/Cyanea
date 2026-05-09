@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 package com.jaredrummler.cyanea.delegate
 
 import android.annotation.TargetApi
@@ -50,7 +52,9 @@ internal open class CyaneaDelegateImplV19(
           if (child !is DrawerLayout) {
             child.fitsSystemWindows = true
             val id = activity.resources.getIdentifier(
-              "config_enableTranslucentDecor", "bool", "android"
+              "config_enableTranslucentDecor",
+              "bool",
+              "android"
             )
             if (id != 0) {
               val enabled = activity.resources.getBoolean(id)

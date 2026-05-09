@@ -39,12 +39,14 @@ class RecyclerViewActivity : CyaneaAppCompatActivity() {
     override fun onBindViewHolder(holder: DemoViewHolder, position: Int) {
       val number = position + 1
       holder.itemView.titleText.text = "Item #$number"
-      holder.itemView.subtitleText.text = (when {
-        number % 15 == 0 -> "FizzBuzz"
-        number % 3 == 0 -> "Fizz"
-        number % 5 == 0 -> "Buzz"
-        else -> number.toString()
-      })
+      holder.itemView.subtitleText.text = (
+        when {
+          number % 15 == 0 -> "FizzBuzz"
+          number % 3 == 0 -> "Fizz"
+          number % 5 == 0 -> "Buzz"
+          else -> number.toString()
+        }
+        )
     }
   }
 

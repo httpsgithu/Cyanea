@@ -155,7 +155,7 @@ internal class CompoundButtonProcessor : CyaneaViewProcessor<CompoundButton>() {
   override fun process(view: CompoundButton, attrs: AttributeSet?, cyanea: Cyanea) {
     view.buttonTintList?.let { cyanea.tinter.tint(it) } ?: run {
       view.buttonTintList = cyanea.tinter.tint(
-          view.context.getColorStateList(R.color.abc_tint_btn_checkable)
+        view.context.getColorStateList(R.color.abc_tint_btn_checkable)
       )
     }
     val background = view.background
@@ -164,12 +164,12 @@ internal class CompoundButtonProcessor : CyaneaViewProcessor<CompoundButton>() {
       val unchecked = ContextCompat.getColor(view.context, resid)
       val checked = ColorUtils.adjustAlpha(cyanea.accent, 0.4f)
       val csl = ColorStateList(
-          arrayOf(
-              intArrayOf(-attr.state_activated, -attr.state_checked),
-              intArrayOf(attr.state_activated),
-              intArrayOf(attr.state_checked)
-          ),
-          intArrayOf(unchecked, checked, checked)
+        arrayOf(
+          intArrayOf(-attr.state_activated, -attr.state_checked),
+          intArrayOf(attr.state_activated),
+          intArrayOf(attr.state_checked)
+        ),
+        intArrayOf(unchecked, checked, checked)
       )
       background.setColor(csl)
     }
@@ -242,18 +242,18 @@ internal class NavigationViewProcessor : CyaneaViewProcessor<NavigationView>() {
 
     view.apply {
       itemTextColor = ColorStateList(
-          arrayOf(
-              intArrayOf(-android.R.attr.state_checked),
-              intArrayOf(android.R.attr.state_checked)
-          ),
-          intArrayOf(unselectedTextColor, checkedColor)
+        arrayOf(
+          intArrayOf(-android.R.attr.state_checked),
+          intArrayOf(android.R.attr.state_checked)
+        ),
+        intArrayOf(unselectedTextColor, checkedColor)
       )
       itemIconTintList = ColorStateList(
-          arrayOf(
-              intArrayOf(-android.R.attr.state_checked),
-              intArrayOf(android.R.attr.state_checked)
-          ),
-          intArrayOf(unselectedIconColor, checkedColor)
+        arrayOf(
+          intArrayOf(-android.R.attr.state_checked),
+          intArrayOf(android.R.attr.state_checked)
+        ),
+        intArrayOf(unselectedIconColor, checkedColor)
       )
     }
   }
@@ -293,10 +293,12 @@ internal class SwitchCompatProcessor : CyaneaViewProcessor<SwitchCompat>() {
   override fun process(view: SwitchCompat, attrs: AttributeSet?, cyanea: Cyanea) {
     // SwitchCompat sets a ColorStateList on the drawable. Here, we get and modify the tint.
     val manager = AppCompatDrawableManager.get()
-    Reflection.invoke<ColorStateList>(manager, "getTintList",
-        arrayOf(Context::class.java, Int::class.java),
-        view.context,
-        androidx.appcompat.R.drawable.abc_switch_thumb_material
+    Reflection.invoke<ColorStateList>(
+      manager,
+      "getTintList",
+      arrayOf(Context::class.java, Int::class.java),
+      view.context,
+      androidx.appcompat.R.drawable.abc_switch_thumb_material
     )?.let { csl ->
       cyanea.tinter.tint(csl)
     }

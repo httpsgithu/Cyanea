@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
 package com.jaredrummler.cyanea
 
 import android.app.Application
@@ -38,12 +40,13 @@ import org.mockito.junit.MockitoJUnitRunner
 class CyaneaResourcesTest {
 
   @Mock private lateinit var app: Application
+
   @Mock private lateinit var res: Resources
   private lateinit var cyanea: Cyanea
 
   @Before fun setUp() {
     whenever(app.getSharedPreferences(anyString(), anyInt()))
-        .thenReturn(mock())
+      .thenReturn(mock())
     Cyanea.init(app, res)
     cyanea = Cyanea.instance
   }
@@ -52,12 +55,12 @@ class CyaneaResourcesTest {
     val resources = CyaneaResources(res)
 
     val drawableIds = arrayOf(
-        R.drawable.cyanea_bg_dark,
-        R.drawable.cyanea_bg_dark_lighter,
-        R.drawable.cyanea_bg_dark_darker,
-        R.drawable.cyanea_bg_light,
-        R.drawable.cyanea_bg_light_lighter,
-        R.drawable.cyanea_bg_light_darker
+      R.drawable.cyanea_bg_dark,
+      R.drawable.cyanea_bg_dark_lighter,
+      R.drawable.cyanea_bg_dark_darker,
+      R.drawable.cyanea_bg_light,
+      R.drawable.cyanea_bg_light_lighter,
+      R.drawable.cyanea_bg_light_darker
     )
 
     drawableIds.forEach { resid ->

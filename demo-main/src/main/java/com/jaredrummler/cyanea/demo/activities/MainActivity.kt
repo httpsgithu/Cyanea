@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.jaredrummler.cyanea.demo.activities
 
 import android.content.Intent
@@ -74,7 +76,8 @@ class MainActivity : CyaneaAppCompatActivity(), OnMenuItemClickListener {
     }
     R.id.action_github -> {
       startActivity(
-        Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_project_url)))); true
+        Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_project_url)))
+      ); true
     }
     R.id.action_settings -> {
       startActivity(Intent(this, CyaneaSettingsActivity::class.java)); true
@@ -119,7 +122,8 @@ class MainActivity : CyaneaAppCompatActivity(), OnMenuItemClickListener {
   class DemoPagerAdapter(
     private val activity: FragmentActivity
   ) : FragmentStatePagerAdapter(
-    activity.supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+    activity.supportFragmentManager,
+    BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
   ) {
 
     private val items = activity.resources.getStringArray(R.array.tabs)
@@ -131,7 +135,8 @@ class MainActivity : CyaneaAppCompatActivity(), OnMenuItemClickListener {
         activity.getString(R.string.tab_dialogs) -> DialogsFragment()
         activity.getString(R.string.tab_other) -> OtherFragment()
         else -> throw IllegalArgumentException(
-          "No fragment associated with tab '${items[position]}'")
+          "No fragment associated with tab '${items[position]}'"
+        )
       }
     }
 
